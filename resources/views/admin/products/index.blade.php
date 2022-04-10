@@ -22,7 +22,7 @@
                         <td scope="row">{{ $product->name }}</td>
                         <td scope="row">$ {{ number_format($product->price,2,'.',' ') }}</td>
                         <td scope="row" >
-                            <img class="w-25 d-block mx-auto" src="{{$product->photo}}" alt="">
+                            <img class="w-25 d-block mx-auto" src="{{asset('storage/'.$product->photo)}}" alt="">
                         </td>
                         <td>
                             <a href="{{ route('products.edit', $product) }}" class="btn btn-primary">Edit</a>

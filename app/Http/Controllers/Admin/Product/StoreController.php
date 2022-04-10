@@ -13,7 +13,13 @@ class StoreController extends Controller
     public function __invoke(StoreProductRequest $request)
     {
         $data = $request->all();
-        $data['photo'] = $data['photo'] ?? Container::getInstance()->make(Generator::class)->imageUrl;
+
+        if(isset($data['photo'])){
+            $path = $request->file('photo')->store('photos','public');
+        } else {
+            $path = Container::getInstance()->make(Generator::class)->imageUrl;
+        }
+        $data['photo'] = $path;
         Product::create($data);
         return redirect()->route('products.index');
     }

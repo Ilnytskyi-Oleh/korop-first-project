@@ -11,9 +11,7 @@ class CreateController extends Controller
 {
     public function __invoke()
     {
-
         $categories = Category::pluck('name', 'id');
-
         return view('admin.products.create', compact('categories'));
     }
 }
